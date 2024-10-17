@@ -34,7 +34,7 @@ const slides = [
 
 
 let currentSlide = 0; // Index de la slide active
-const totalSlides = 4; // Nombre total de slides
+const totalSlides = slides.length; // Nombre total de slides
  
 // Mise a jour des bullet points selon la slide active
 function updateDots() {
@@ -62,15 +62,15 @@ function updateSlide() {
 
 // eventListener arrow left
 arrowLeft.addEventListener('click', ()=> {
-	console.log('fleche gauche');
-	currentSlide = (currentSlide-1) % totalSlides;
+	console.log('fleche gauche'); // Vérification console
+	currentSlide = (currentSlide-1 + totalSlides) % totalSlides; // Permet le tour infini (retour gauche)
 	updateSlide();
 	updateDots();
 });
 
 // eventListener arrow right
 arrowRight.addEventListener('click', ()=> {
-	console.log('fleche droite')
+	console.log('fleche droite') // Vérification console
 	currentSlide = (currentSlide+1) % totalSlides;
 	updateSlide();
 	updateDots();
@@ -78,7 +78,7 @@ arrowRight.addEventListener('click', ()=> {
 
 
 
-// Initialise les bullet points au chargement
+// Initialise les bullet points et slides au chargement
 updateDots();
 
 updateSlide();
