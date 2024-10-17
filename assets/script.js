@@ -49,7 +49,11 @@ function updateDots() {
 
 // Mise a jour de l'image et du tagline
 function updateSlide() {
-	bannerImg.src='./assets/images/slideshow/${slides[currentSlide].image}';
+	// vérifier la source de l'image
+	//console.log(`Image source: ./assets/images/slideshow/${slides[currentSlide].image}`);
+	//console.log(`Tagline: ${slides[currentSlide].tagLine}`);
+
+	bannerImg.src=`./assets/images/slideshow/${slides[currentSlide].image}`;
 	bannerTagline.innerHTML=slides[currentSlide].tagLine;
 	updateDots();
 }
@@ -60,7 +64,7 @@ function updateSlide() {
 arrowLeft.addEventListener('click', ()=> {
 	console.log('fleche gauche');
 	currentSlide = (currentSlide-1) % totalSlides;
-	updateSlide()
+	updateSlide();
 	updateDots();
 });
 
@@ -68,7 +72,7 @@ arrowLeft.addEventListener('click', ()=> {
 arrowRight.addEventListener('click', ()=> {
 	console.log('fleche droite')
 	currentSlide = (currentSlide+1) % totalSlides;
-	updateSlide()
+	updateSlide();
 	updateDots();
 });
 
