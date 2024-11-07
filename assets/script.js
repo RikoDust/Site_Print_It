@@ -36,7 +36,7 @@ const slides = [
 let currentSlide = 0; // Index de la slide active
 const totalSlides = slides.length; // Nombre total de slides
  
-// Mise a jour des bullet points selon la slide active
+// Mise a jour des bullet points selon la slide actif
 function updateDots() {
 	dots.forEach((dot, index)=> {
 		if (index === currentSlide) {
@@ -48,13 +48,9 @@ function updateDots() {
 }
 
 // Mise a jour de l'image et du tagline
-function updateSlide() {
-	// vérifier la source de l'image
-	//console.log(`Image source: ./assets/images/slideshow/${slides[currentSlide].image}`);
-	//console.log(`Tagline: ${slides[currentSlide].tagLine}`);
-
-	bannerImg.src=`./assets/images/slideshow/${slides[currentSlide].image}`;
-	bannerTagline.innerHTML=slides[currentSlide].tagLine;
+function updateSlide(slide) {
+	bannerImg.src=`./assets/images/slideshow/${slides[slide].image}`;
+	bannerTagline.innerHTML=slides[slide].tagLine;
 	updateDots();
 }
 
@@ -64,7 +60,7 @@ function updateSlide() {
 arrowLeft.addEventListener('click', ()=> {
 	console.log('fleche gauche'); // Vérification console
 	currentSlide = (currentSlide-1 + totalSlides) % totalSlides; // Permet le tour infini (retour gauche)
-	updateSlide();
+	updateSlide(currentSlide);
 	updateDots();
 });
 
@@ -72,7 +68,7 @@ arrowLeft.addEventListener('click', ()=> {
 arrowRight.addEventListener('click', ()=> {
 	console.log('fleche droite') // Vérification console
 	currentSlide = (currentSlide+1) % totalSlides;
-	updateSlide();
+	updateSlide(currentSlide);
 	updateDots();
 });
 
