@@ -51,7 +51,6 @@ function updateDots() {
 function updateSlide(slide) {
 	bannerImg.src=`./assets/images/slideshow/${slides[slide].image}`;
 	bannerTagline.innerHTML=slides[slide].tagLine;
-	updateDots();
 }
 
 
@@ -71,6 +70,18 @@ arrowRight.addEventListener('click', ()=> {
 	updateSlide(currentSlide);
 	updateDots();
 });
+
+
+// Ajout eventListener au click pour les dots et affichage slide
+dots.forEach((dot, index)=>{
+	dot.addEventListener('click', ()=>{
+		currentSlide = index;
+		updateSlide(currentSlide);
+		updateDots()
+	});
+});
+
+
 
 
 
