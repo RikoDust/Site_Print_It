@@ -36,21 +36,22 @@ const slides = [
 let currentSlide = 0; // Index de la slide active
 const totalSlides = slides.length; // Nombre total de slides
  
+
 // Mise a jour des bullet points selon la slide actif
 function updateDots() {
 	dots.forEach((dot, index)=> {
 		if (index === currentSlide) {
-			dot.classList.add('dot_selected');
+			dot.classList.add('dot_selected'); // Applique le style CSS "dot selected"
 		} else {
-			dot.classList.remove('dot_selected');
+			dot.classList.remove('dot_selected'); // Retire le style CSS "dot selected"
 		}
 	});
 }
 
 // Mise a jour de l'image et du tagline
 function updateSlide(slide) {
-	bannerImg.src=`./assets/images/slideshow/${slides[slide].image}`;
-	bannerTagline.innerHTML=slides[slide].tagLine;
+	bannerImg.src=`./assets/images/slideshow/${slides[slide].image}`; // Met a jour l'image en allant chercher dans le dossier "slideshow"
+	bannerTagline.innerHTML=slides[slide].tagLine; // Met a jour le tagline
 }
 
 
@@ -58,7 +59,7 @@ function updateSlide(slide) {
 // eventListener arrow left
 arrowLeft.addEventListener('click', ()=> {
 	console.log('fleche gauche'); // Vérification console
-	currentSlide = (currentSlide-1 + totalSlides) % totalSlides; // Permet le tour infini (retour gauche)
+	currentSlide = (currentSlide-1 + totalSlides) % totalSlides; // Permet le tour infini (retour gauche) en evitant d'obtenir un index negatif (+ totalSlides)
 	updateSlide(currentSlide);
 	updateDots();
 });
@@ -66,18 +67,19 @@ arrowLeft.addEventListener('click', ()=> {
 // eventListener arrow right
 arrowRight.addEventListener('click', ()=> {
 	console.log('fleche droite') // Vérification console
-	currentSlide = (currentSlide+1) % totalSlides;
+	currentSlide = (currentSlide+1) % totalSlides; // Definit le nouvel index
 	updateSlide(currentSlide);
 	updateDots();
 });
 
 
-// Ajout eventListener au click pour les dots et affichage slide
-dots.forEach((dot, index)=>{
+
+// Ajout eventListener au click pour les dots et affichage slide selon index
+dots.forEach((dot, index)=>{  // La méthode parcours chaque elements dans "dots" avec les parametres dot(element actuel) et index(sa position)
 	dot.addEventListener('click', ()=>{
-		currentSlide = index;
-		updateSlide(currentSlide);
-		updateDots()
+		currentSlide = index; // definit currentSlide égale a l'index du dot cliqué
+		updateSlide(currentSlide); // Appel la fonction pour mettre a jour l'affichage
+		updateDots() // Appel la fonction pour actualiser les dots (style dot seleted)
 	});
 });
 
