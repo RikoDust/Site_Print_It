@@ -2,14 +2,15 @@
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
 
-// Seclection des elements avec la class .dot
-const dots = document.querySelectorAll('.dot');
-
 // Délcaration des images de la banniere
 const bannerImg = document.getElementById('banner-img');
 
 // Déclaration des elements TagLine
 const bannerTagline = document.getElementById('banner-tagline');
+
+// Selection de l'élément avec la class .dots
+const dotsContainer = document.querySelector('.dots');
+let dots=[]; // Créer un tableau qui stock les données des dot
 
 // Déclaration des images et tagline du caroussel 
 const slides = [
@@ -35,7 +36,15 @@ const slides = [
 
 let currentSlide = 0; // Index de la slide active
 const totalSlides = slides.length; // Nombre total de slides
- 
+
+// Création des "dot" de façon dynamique
+for (let i = 0; i < totalSlides; i++){
+	const dot = document.createElement('div'); // Créer l'élément div
+	dot.classList.add('dot'); // Ajoute la class dot à l'élément div
+	dotsContainer.appendChild(dot); // Ajoute l'élément comme enfant de dotsContainer
+	dots.push(dot); // Ajoute dot dans le tableau dots pour conserver les références
+}
+
 
 // Mise a jour des bullet points selon la slide actif
 function updateDots() {
@@ -90,5 +99,4 @@ dots.forEach((dot, index)=>{  // La méthode parcours chaque elements dans "dots
 // Initialise les bullet points et slides au chargement
 updateDots();
 
-updateSlide();
 
