@@ -1,4 +1,4 @@
-# Print-It WebSite v.1
+# Print-It WebSite
 
 Projet - Print It ! (formation intégrateur web - Openclassrooms)
 
